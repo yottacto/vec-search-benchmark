@@ -39,7 +39,7 @@ BENCHMARK_DEFINE_F(search, empty_loop)(benchmark::State& st)
 }
 
 BENCHMARK_REGISTER_F(search, empty_loop)
-    ->RangeMultiplier(4)->Range(8, 8<<20);
+    ->RangeMultiplier(2)->Range(8, 8<<17);
 
 BENCHMARK_DEFINE_F(search, vec_compare)(benchmark::State& st)
 {
@@ -56,7 +56,7 @@ BENCHMARK_DEFINE_F(search, vec_compare)(benchmark::State& st)
 }
 
 BENCHMARK_REGISTER_F(search, vec_compare)
-    ->RangeMultiplier(4)->Range(8, 8<<20);
+    ->RangeMultiplier(2)->Range(8, 8<<17);
 
 BENCHMARK_DEFINE_F(search, linear_compare)(benchmark::State& st)
 {
@@ -74,7 +74,7 @@ BENCHMARK_DEFINE_F(search, linear_compare)(benchmark::State& st)
 }
 
 BENCHMARK_REGISTER_F(search, linear_compare)
-    ->RangeMultiplier(4)->Range(8, 8<<20);
+    ->RangeMultiplier(2)->Range(8, 8<<17);
 
 BENCHMARK_MAIN();
 
