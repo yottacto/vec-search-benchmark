@@ -1,6 +1,11 @@
 # Vec Search Benchmark
 
-Benchmark for 256 bit vectorized search.
+Benchmark for 256-bit vectorized search.
+
+Suppose we have 8 32-bit integers in a row, given a target number, we want to
+know the position of the target in those 8 32-bit integers. If doesn't exist,
+the position is `-1`. In vectorized case, if the mask is `0`, then the target
+doesn't exist.
 
 ## Run
 
