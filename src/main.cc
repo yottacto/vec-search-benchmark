@@ -9,25 +9,25 @@
 
 struct search : benchmark::Fixture
 {
-  void SetUp(const ::benchmark::State& state)
-  {
-      a = _mm256_set_epi32(1, 2, 3, 4, 5, 6, 7, 8);
+    void SetUp(const ::benchmark::State& state)
+    {
+        a = _mm256_set_epi32(1, 2, 3, 4, 5, 6, 7, 8);
 
-      std::random_device rd{};
-      std::mt19937 gen{rd()};
-      std::uniform_int_distribution<> dis(1, 16);
+        std::random_device rd{};
+        std::mt19937 gen{rd()};
+        std::uniform_int_distribution<> dis(1, 16);
 
-      n = state.range(0);
-      targets.reserve(n);
-      targets.resize(n);
-      for (auto& i : targets)
-          i = dis(gen);
-  }
+        n = state.range(0);
+        targets.reserve(n);
+        targets.resize(n);
+        for (auto& i : targets)
+            i = dis(gen);
+    }
 
-  int n;
-  __m256i a;
-  std::vector<int> v{1, 2, 3, 4, 5, 6, 7, 8};
-  std::vector<int> targets;
+    int n;
+    __m256i a;
+    std::vector<int> v{1, 2, 3, 4, 5, 6, 7, 8};
+    std::vector<int> targets;
 };
 
 BENCHMARK_DEFINE_F(search, empty_loop)(benchmark::State& st)
@@ -60,17 +60,17 @@ BENCHMARK_REGISTER_F(search, vec_compare)
 
 BENCHMARK_DEFINE_F(search, linear_compare)(benchmark::State& st)
 {
-   for (auto _ : st) {
-       for (auto target : targets) {
-           int pos = -1;
-           for (auto i = 0; i < 8; i++)
-               if (v[i] == target) {
-                   pos = i;
-                   break;
-               }
-           benchmark::DoNotOptimize(pos);
-       }
-   }
+    for (auto _ : st) {
+        for (auto target : targets) {
+            int pos = -1;
+            for (auto i = 0; i < 8; i++)
+                if (v[i] == target) {
+                    pos = i;
+                    break;
+                }
+            benchmark::DoNotOptimize(pos);
+        }
+    }
 }
 
 BENCHMARK_REGISTER_F(search, linear_compare)
