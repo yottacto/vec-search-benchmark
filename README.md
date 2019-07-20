@@ -14,7 +14,6 @@ You can modify the range in [src/main.cc](src/main.cc).
 
 Results on my personal laptop.
 
-```html
 <pre>Running build/build
 Run on (8 X 3500 MHz CPU s)
 CPU Caches:
@@ -64,5 +63,4 @@ Benchmark                              Time             CPU   Iterations
 <font color="#00CD00">search/linear_compare/4194304 </font><font color="#CDCD00">  29162511 ns     29121459 ns   </font><font color="#00CDCD">        24</font>
 <font color="#00CD00">search/linear_compare/8388608 </font><font color="#CDCD00">  67886647 ns     67601514 ns   </font><font color="#00CDCD">        11</font>
 </pre>
-```
 
